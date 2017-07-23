@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Eventful is a column store based event cache, designed to support real time projection of event data.
+
+Eventful is published on GitHub at https://github.com/Breesy/Eventful</Description>
+    <PackageProjectUrl>https://github.com/Breesy/Eventful</PackageProjectUrl>
+    <PackageId>Eventful.Core</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

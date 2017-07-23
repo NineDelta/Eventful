@@ -1,0 +1,28 @@
+version: 0.1.{build}
+image: Visual Studio 2017
+platform: Any CPU
+configuration: Release
+
+pull_requests:
+  do_not_increment_build_number: true
+
+build:
+  verbosity: minimal
+  publish_nuget: true
+
+before_build:
+  - cmd: dotnet restore
+
+build_script:
+  - ps: dotnet build Eventful.Core\Eventful.Core.csproj --configuration Release /property:Version=$env:APPVEYOR_BUILD_VERSION
+  
+after_build:
+  - ps: dotnet pack --configuration Release --output ./artifacts /property:Version=$env:APPVEYOR_BUILD_VERSION --no-build Eventful.Core\Eventful.Core.csproj
+  
+artifacts:
+- path: 'Eventful.Core\artifacts\*.nupkg'
+  name: NuGet Package
+
+nuget:
+  account_feed: true
+  project_feed: true
